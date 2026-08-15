@@ -1,0 +1,1701 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>刘凯旋 · 简历</title>
+    <style>
+        /* ===== CSS Variables & Reset ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-primary: #4f46e5;
+            --color-primary-light: #818cf8;
+            --color-primary-dark: #3730a3;
+            --color-secondary: #7c3aed;
+            --color-accent: #06b6d4;
+            --color-bg: #f1f5f9;
+            --color-card: #ffffff;
+            --color-text: #0f172a;
+            --color-text-secondary: #475569;
+            --color-text-muted: #94a3b8;
+            --color-border: #e2e8f0;
+            --color-shadow: rgba(15, 23, 42, 0.08);
+            --color-shadow-hover: rgba(79, 70, 229, 0.15);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            --max-width: 1080px;
+            --nav-height: 68px;
+        }
+
+        /* dark mode */
+        [data-theme="dark"] {
+            --color-bg: #0f172a;
+            --color-card: #1e293b;
+            --color-text: #f1f5f9;
+            --color-text-secondary: #cbd5e1;
+            --color-text-muted: #64748b;
+            --color-border: #334155;
+            --color-shadow: rgba(0, 0, 0, 0.4);
+            --color-shadow-hover: rgba(79, 70, 229, 0.25);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background var(--transition), color var(--transition);
+            padding-top: var(--nav-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--color-primary-light);
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary-light);
+            border-radius: 8px;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navigation ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: saturate(180%) blur(12px);
+            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar-brand .badge-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            margin-right: 4px;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .navbar-links a {
+            color: var(--color-text-secondary);
+            transition: color var(--transition);
+            position: relative;
+        }
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition);
+        }
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+        .navbar-links a:hover {
+            color: var(--color-text);
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+        .btn-icon:hover {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+        }
+        .btn-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text);
+            border-radius: 4px;
+            transition: all var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            .navbar-links {
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--color-card);
+                border-bottom: 1px solid var(--color-border);
+                padding: 20px 24px;
+                gap: 14px;
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: all var(--transition);
+                pointer-events: none;
+                box-shadow: var(--color-shadow);
+            }
+            .navbar-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .navbar-actions .btn-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 48px 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .hero-main {
+            flex: 2;
+            min-width: 280px;
+        }
+        .hero-side {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .hero-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+        .hero-name .highlight {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-title {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            margin-bottom: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+        .hero-title .tag {
+            background: var(--color-border);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+        .hero-desc {
+            color: var(--color-text-secondary);
+            max-width: 560px;
+            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .hero-badges .badge {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            box-shadow: 0 2px 6px var(--color-shadow);
+            transition: all var(--transition);
+        }
+        .hero-badges .badge:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px var(--color-shadow-hover);
+        }
+
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .hero-contact .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--color-border);
+            background: var(--color-card);
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: 0 2px 6px var(--color-shadow);
+        }
+        .hero-contact .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--color-shadow-hover);
+            border-color: var(--color-primary);
+        }
+        .hero-contact .btn-primary {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+        .hero-contact .btn-primary:hover {
+            background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+        }
+
+        .hero-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 12px 32px rgba(79, 70, 229, 0.25);
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            width: 100%;
+        }
+        .hero-meta .item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-meta .item svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            flex-shrink: 0;
+        }
+        .hero-meta .item .copy-btn {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            font-size: 0.75rem;
+            padding: 0 4px;
+            transition: color var(--transition);
+        }
+        .hero-meta .item .copy-btn:hover {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+                padding: 28px 0 24px;
+            }
+            .hero-main {
+                text-align: center;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .hero-badges {
+                justify-content: center;
+            }
+            .hero-contact {
+                justify-content: center;
+            }
+            .hero-side {
+                align-items: center;
+            }
+            .hero-meta {
+                align-items: center;
+            }
+            .hero-name {
+                font-size: 2.2rem;
+            }
+            .hero-avatar {
+                width: 96px;
+                height: 96px;
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ===== Highlight Stats ===== */
+        .stats-section {
+            padding: 20px 0 36px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+        }
+        .stat-card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 18px 20px;
+            text-align: center;
+            transition: all var(--transition);
+            box-shadow: 0 2px 8px var(--color-shadow);
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px var(--color-shadow-hover);
+            border-color: var(--color-primary-light);
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.2;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            margin-top: 2px;
+        }
+
+        /* ===== Section ===== */
+        .section {
+            padding: 32px 0 28px;
+            border-top: 1px solid var(--color-border);
+        }
+        .section:first-of-type {
+            border-top: none;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .accent-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary-light), transparent);
+            border-radius: 4px;
+        }
+
+        /* ===== Tabs ===== */
+        .tabs {
+            margin-top: 6px;
+        }
+        .tabs-nav {
+            display: flex;
+            gap: 4px;
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tabs-nav button {
+            background: none;
+            border: none;
+            padding: 10px 20px 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: all var(--transition);
+            position: relative;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            font-family: inherit;
+        }
+        .tabs-nav button::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition);
+        }
+        .tabs-nav button:hover {
+            color: var(--color-text);
+            background: var(--color-border);
+        }
+        .tabs-nav button[aria-selected="true"] {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        .tabs-nav button[aria-selected="true"]::after {
+            width: 60%;
+        }
+        .tabs-panel {
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .tabs-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Experience / Project Cards ===== */
+        .exp-item,
+        .project-item {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            transition: all var(--transition);
+            box-shadow: 0 2px 8px var(--color-shadow);
+        }
+        .exp-item:hover,
+        .project-item:hover {
+            box-shadow: 0 8px 28px var(--color-shadow-hover);
+            transform: translateY(-2px);
+            border-color: var(--color-primary-light);
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            gap: 6px 12px;
+        }
+        .exp-header .title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .exp-header .company {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        .exp-header .date {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .exp-location {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .exp-desc {
+            padding-left: 0;
+            list-style: none;
+        }
+        .exp-desc li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.92rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .exp-desc li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* project */
+        .project-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 6px 12px;
+            margin-bottom: 4px;
+        }
+        .project-header .name {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .project-header .sub {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0 10px;
+        }
+        .project-tech span {
+            background: var(--color-border);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== Skills ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .skill-group {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+            transition: all var(--transition);
+        }
+        .skill-group:hover {
+            border-color: var(--color-primary-light);
+            box-shadow: 0 4px 16px var(--color-shadow);
+        }
+        .skill-group .label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+        .skill-group .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .skill-group .tags span {
+            background: var(--color-border);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            transition: all var(--transition);
+        }
+        .skill-group .tags span:hover {
+            background: var(--color-primary);
+            color: #fff;
+            transform: scale(1.04);
+        }
+
+        /* progress style */
+        .skill-bar-wrap {
+            margin-top: 4px;
+        }
+        .skill-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+            font-size: 0.82rem;
+        }
+        .skill-bar-item .name {
+            min-width: 80px;
+            color: var(--color-text-secondary);
+        }
+        .skill-bar-item .bar {
+            flex: 1;
+            height: 4px;
+            background: var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .skill-bar-item .bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
+            transition: width 0.6s ease;
+            width: 0;
+        }
+        .skill-bar-item .pct {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            min-width: 32px;
+            text-align: right;
+        }
+
+        /* ===== Education & Cert ===== */
+        .edu-item {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: all var(--transition);
+        }
+        .edu-item:hover {
+            border-color: var(--color-primary-light);
+            box-shadow: 0 4px 16px var(--color-shadow);
+        }
+        .edu-item .school {
+            font-weight: 700;
+            font-size: 1.02rem;
+        }
+        .edu-item .major {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .edu-item .meta {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            margin-top: 2px;
+        }
+        .edu-item .desc {
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .cert-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 4px;
+        }
+        .cert-item {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            flex: 1 1 200px;
+            transition: all var(--transition);
+        }
+        .cert-item:hover {
+            border-color: var(--color-primary-light);
+            box-shadow: 0 4px 14px var(--color-shadow);
+            transform: translateY(-2px);
+        }
+        .cert-item .name {
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+        .cert-item .issuer {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+        }
+        .cert-item .date {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+        .cert-item .desc {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            border-top: 1px solid var(--color-border);
+            padding: 24px 0 20px;
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+        }
+
+        /* ===== Back to top ===== */
+        .back-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+            transition: all var(--transition);
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .back-top:hover {
+            transform: scale(1.08);
+            background: var(--color-primary-dark);
+        }
+
+        /* ===== Print ===== */
+        @media print {
+            body {
+                background: #fff !important;
+                color: #000 !important;
+                padding-top: 0 !important;
+            }
+            .navbar,
+            .back-top,
+            .btn-icon,
+            .nav-toggle,
+            .hero-contact .btn {
+                display: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 16px !important;
+            }
+            .hero {
+                padding: 20px 0 12px !important;
+            }
+            .stat-card,
+            .exp-item,
+            .project-item,
+            .edu-item,
+            .cert-item,
+            .skill-group {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                transform: none !important;
+                page-break-inside: avoid;
+            }
+            .section {
+                padding: 16px 0 12px !important;
+                border-top-color: #ccc !important;
+            }
+            .tabs-panel {
+                display: block !important;
+            }
+            .tabs-nav {
+                display: none !important;
+            }
+            .hero-avatar {
+                background: #4f46e5 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .stat-number {
+                color: #4f46e5 !important;
+            }
+            .cert-item .name,
+            .exp-header .company,
+            .project-header .name {
+                color: #000 !important;
+            }
+            .exp-desc li::before {
+                color: #4f46e5 !important;
+            }
+            .hero-name .highlight {
+                background: none !important;
+                -webkit-text-fill-color: #4f46e5 !important;
+                color: #4f46e5 !important;
+            }
+        }
+
+        /* ===== prefers-reduced-motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ===== Utilities ===== */
+        .text-muted {
+            color: var(--color-text-muted);
+        }
+        .mt-1 {
+            margin-top: 8px;
+        }
+        .mb-1 {
+            margin-bottom: 8px;
+        }
+        .gap-1 {
+            gap: 8px;
+        }
+        .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .copy-toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-text);
+            color: var(--color-bg);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 200;
+            font-weight: 500;
+        }
+        .copy-toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== Copy Toast ===== -->
+    <div id="copyToast" class="copy-toast">✓ 已复制</div>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="navbar-inner">
+            <div class="navbar-brand">
+                <span class="badge-dot"></span>
+                刘凯旋
+            </div>
+
+            <ul class="navbar-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#hero" role="menuitem">首页</a></li>
+                <li role="none"><a href="#experience" role="menuitem">经历</a></li>
+                <li role="none"><a href="#projects" role="menuitem">项目</a></li>
+                <li role="none"><a href="#skills" role="menuitem">技能</a></li>
+                <li role="none"><a href="#education" role="menuitem">教育</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <button class="btn-icon" id="themeToggle" aria-label="切换深色/浅色模式" title="切换主题">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button class="btn-icon" id="printBtn" aria-label="打印简历" title="打印 / PDF">
+                    <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M18 9H6"/><path d="M18 15H6"/><path d="M6 21h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2z"/></svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="切换导航菜单" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== Main Container ===== -->
+    <main class="container" id="app">
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-main">
+                <h1 class="hero-name">
+                    <span class="highlight">刘凯旋</span>
+                </h1>
+                <div class="hero-title">
+                    <span>人工智能训练师 · 智能体开发者</span>
+                    <span class="tag">AI 工程化</span>
+                    <span class="tag">AIGC</span>
+                    <span class="tag">百炼平台</span>
+                </div>
+                <p class="hero-desc">
+                    专注于人工智能工程化落地与智能体应用开发，具备扎实的算法基础与工程实践能力。
+                    深度掌握大语言模型调优、AIGC 视觉设计及企业级智能体全链路搭建，善于将 AI 能力转化为可量化的业务价值。
+                </p>
+                <div class="hero-badges" id="heroBadges"></div>
+                <div class="hero-contact" id="heroContact"></div>
+            </div>
+            <div class="hero-side">
+                <div class="hero-avatar">LK</div>
+                <div class="hero-meta" id="heroMeta"></div>
+            </div>
+        </section>
+
+        <!-- ===== STATS ===== -->
+        <section class="stats-section" id="stats">
+            <div class="stats-grid" id="statsGrid"></div>
+        </section>
+
+        <!-- ===== EXPERIENCE ===== -->
+        <section class="section" id="experience">
+            <div class="section-title">
+                工作经历 <span class="accent-line"></span>
+            </div>
+            <div class="tabs" id="expTabs" role="tablist">
+                <div class="tabs-nav" id="expNav"></div>
+                <div id="expPanels"></div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS ===== -->
+        <section class="section" id="projects">
+            <div class="section-title">
+                项目经历 <span class="accent-line"></span>
+            </div>
+            <div id="projectList"></div>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section class="section" id="skills">
+            <div class="section-title">
+                专业技能 <span class="accent-line"></span>
+            </div>
+            <div class="skills-grid" id="skillsGrid"></div>
+        </section>
+
+        <!-- ===== EDUCATION & CERT ===== -->
+        <section class="section" id="education">
+            <div class="section-title">
+                教育 &amp; 证书 <span class="accent-line"></span>
+            </div>
+            <div id="eduCertContent"></div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <span>© 2026 刘凯旋</span>
+            <span>·</span>
+            <span>简历最后更新：2026 年 8 月</span>
+            <span>·</span>
+            <span>使用 ❤️ 与 AI 构建</span>
+        </footer>
+    </main>
+
+    <!-- ===== Back to Top ===== -->
+    <button class="back-top" id="backTop" aria-label="返回顶部" title="返回顶部">↑</button>
+
+    <script>
+        // ============================================================
+        //  RESUME DATA
+        // ============================================================
+        const resume = {
+            name: '刘凯旋',
+            email: '483573290@qq.com',
+            phone: '17356774826',
+            location: '安徽亳州',
+            github: '',
+            portfolio: '',
+            avatar: 'LK',
+
+            // 亮点数据 (stat)
+            stats: [
+                { number: '91.7%', label: '意图识别准确率' },
+                { number: '30%', label: '客服人力释放' },
+                { number: '40min', label: '单图设计周期' },
+                { number: '86%', label: '任务完成成功率' },
+            ],
+
+            // 技能标签 (hero badges)
+            badges: ['AI 智能体', '百炼平台', 'Stable Diffusion', 'Prompt Engineering', 'Python', '计算机视觉'],
+
+            // 联系方式 (除邮箱电话外)
+            contacts: [
+                { icon: 'mail', label: '483573290@qq.com', copy: true },
+                { icon: 'phone', label: '17356774826', copy: false },
+                { icon: 'map', label: '安徽亳州', copy: false },
+            ],
+
+            // 工作经历 (按 tab 分组)
+            experiences: [{
+                tab: '实习',
+                items: [{
+                    title: '人工智能训练师（高级认证项目实习）',
+                    company: '阿里巴巴集团',
+                    location: '杭州 / 远程',
+                    date: '待补充',
+                    details: [
+                        '深度参与电商智能客服语义理解模型的优化专项，独立完成超 10,000 条用户语料的意图分类标注与质量审核，制定标准化数据标注规范手册，将模型意图识别准确率从 82.3% 提升至 91.7%，显著降低人工转接率约 25%。',
+                        '基于百炼平台搭建垂直领域智能问答 Agent，挂载企业级知识库并配置多轮对话策略与拒答机制，实现 FAQ 自助解决率从 58% 提升至 79%，日均服务会话量达 2,000+ 次，有效释放一线客服人力约 30%。',
+                        '主导设计 AIGC 视觉素材自动化生成工作流，利用 Stable Diffusion 结合 ControlNet 精准控制产品图的构图与风格，将日常运营配图的设计周期从平均 4 小时缩短至 40 分钟，季度累计产出优质素材 600+ 张，支持了 3 场大型促销活动的视觉物料快速迭代。',
+                        '协同算法与产品团队建立模型 BadCase 闭环迭代机制，每周产出模型表现分析报告，定位高频错误场景并推动后续 2 个模型版本的针对性优化，模型整体满意度评价提升 12%。'
+                    ]
+                }]
+            }, {
+                tab: '校园 · 科研',
+                items: [{
+                    title: '科研助理（实验室项目）',
+                    company: '合肥师范学院 · AI 实验室',
+                    location: '安徽合肥',
+                    date: '待补充',
+                    details: [
+                        '协助导师完成基于深度学习的图像分类课题，负责数据清洗与特征工程，构建 5,000+ 规模的训练数据集，支撑后续模型迭代落地。',
+                        '参与实验室智能体相关研究工作，协助搭建轻量级对话系统原型，撰写技术文档与实验报告。'
+                    ]
+                }]
+            }],
+
+            // 项目
+            projects: [{
+                name: '智能体驱动的高效办公助手',
+                subtitle: '基于百炼平台的 Multi-Agent 协作系统',
+                location: '个人项目',
+                date: '待补充',
+                tech: ['百炼平台', 'Multi-Agent', 'Prompt Engineering', 'API 集成'],
+                details: [
+                    '独立策划并完成基于阿里云百炼平台的 Multi-Agent 智能协作系统搭建，设计规划了信息检索、文本生成、内容审核 3 个子 Agent，通过跨 Agent 任务调度与信息协同机制，实现复杂工作流（如周报自动生成、会议纪要整理与待办提取）的全自动化处理。',
+                    '针对信息检索 Agent 挂载外部 API 与知识库，通过优化 Embedding 召回策略与 Prompt 路由逻辑，将检索结果的相关性准确率提升至 88%；对文本生成 Agent 采取 Few-shot 示例注入与格式约束 Prompt，输出内容的结构完整度达到 92%。',
+                    '设计多轮对话状态管理机制与异常兜底回复策略，将任务完成成功率从首次测试的 64% 优化至 86%，项目成果已在个人工作流中常态化使用，每周节省重复性文案处理时间约 5 小时。',
+                    '撰写完整项目技术文档与 Demo 演示视频，复盘沉淀 Prompt 调优经验与 Agent 架构设计方法论，形成可复用的智能体搭建模板。'
+                ]
+            }, {
+                name: '基于 AIGC 的视觉创意设计系统',
+                subtitle: 'VISION 人工智能设计进阶实战',
+                location: '个人 / 课程项目',
+                date: '待补充',
+                tech: ['Stable Diffusion', 'ControlNet', 'LoRA', 'AIGC'],
+                details: [
+                    '运用 VISION 人工智能设计进阶方法论，搭建从需求理解、风格探索到成品交付的全流程 AI 视觉设计管线，覆盖品牌海报、产品概念图、UI 界面概念稿等多类设计场景。',
+                    '针对性调优 Stable Diffusion 模型参数（CFG Scale、Sampling Steps、LoRA 权重融合等），结合 ControlNet 的 Canny 边缘检测与 Depth 深度图控制，使生成图像在构图精准度和风格一致性上较基线模型提升约 40%，交付成果获得校内设计展优秀奖。',
+                    '建立包含 Prompt 库、负面词库与参数组合方案的结构化素材库，将单次设计任务的调参时间从平均 2 小时压缩至 30 分钟以内，出图效率提升约 75%。',
+                    '完成 6 组主题视觉作品创作，其中 2 组作品被选为校内 AI 艺术展参展作品，吸引参展观众 300+ 人次。'
+                ]
+            }],
+
+            // 技能 (分类)
+            skillGroups: [{
+                label: 'AI 模型与智能体',
+                items: ['通义千问', 'GPT 系列', 'Prompt Engineering', '微调与部署', '百炼平台', 'Multi-Agent']
+            }, {
+                label: '计算机视觉 & AIGC',
+                items: ['Stable Diffusion', 'Midjourney', 'ControlNet', 'LoRA', '视觉风格迁移', '图像生成']
+            }, {
+                label: '编程与工程',
+                items: ['Python', 'PyTorch', 'TensorFlow', '数据处理', '模型推理部署', 'Linux']
+            }, {
+                label: 'AI 系统与产品',
+                items: ['需求分析', '数据标注规范', '模型评估迭代', '业务效果追踪', 'AI 产品全生命周期']
+            }],
+
+            // 技能条 (额外展示)
+            skillBars: [
+                { name: 'Python / 深度学习', pct: 88 },
+                { name: 'Prompt Engineering', pct: 92 },
+                { name: 'AIGC 视觉设计', pct: 85 },
+                { name: '智能体开发 (Agent)', pct: 90 },
+                { name: '数据处理与分析', pct: 80 },
+            ],
+
+            // 教育
+            education: {
+                school: '合肥师范学院',
+                major: '待补充专业（计算机 / 人工智能方向）',
+                location: '安徽合肥',
+                gradDate: '预期 2026年6月',
+                courses: '数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、数据库系统、Python程序设计、Linux操作系统',
+                rank: '待补充',
+                desc: '在校期间持续钻研人工智能工程化落地与智能体应用开发，具备扎实的算法基础与工程实践能力。'
+            },
+
+            // 证书
+            certificates: [{
+                name: '阿里巴巴人工智能训练师（高级）',
+                issuer: '阿里巴巴集团',
+                date: '待补充',
+                desc: '系统掌握 AI 产品需求分析、数据标注规范制定、模型效果评估与迭代优化等核心能力，具备独立主导 AI 产品从 0 到 1 落地训练的专业素养。'
+            }, {
+                name: 'VISION 人工智能设计（进阶）认证',
+                issuer: '待补充认证机构',
+                date: '待补充',
+                desc: '掌握 AIGC 视觉设计全流程方法与前沿工具链（Stable Diffusion、Midjourney、ControlNet 等），具备将 AI 能力融入商业设计方案的实战经验。'
+            }, {
+                name: '百炼平台智能体构建认证 / 项目优秀奖',
+                issuer: '阿里云',
+                date: '待补充',
+                desc: '基于百炼平台完成企业级智能体的独立搭建与部署，项目方案在内部技术分享会中获得高度评价。'
+            }]
+        };
+
+        // ============================================================
+        //  RENDER FUNCTIONS
+        // ============================================================
+
+        // --- Hero Badges ---
+        function renderBadges() {
+            const el = document.getElementById('heroBadges');
+            if (!resume.badges || resume.badges.length === 0) { el.classList.add('hidden'); return; }
+            el.innerHTML = resume.badges.map(b => `<span class="badge">${b}</span>`).join('');
+        }
+
+        // --- Hero Contact ---
+        function renderHeroContact() {
+            const el = document.getElementById('heroContact');
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-primary';
+            btn.innerHTML = '📄 下载简历 (PDF)';
+            btn.addEventListener('click', () => window.print());
+            el.appendChild(btn);
+
+            // email copy
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'btn';
+            copyBtn.innerHTML = '✉️ 复制邮箱';
+            copyBtn.addEventListener('click', () => {
+                const email = resume.email;
+                if (email) {
+                    navigator.clipboard.writeText(email).then(() => showToast('✓ 邮箱已复制')).catch(() => {
+                        // fallback
+                        const ta = document.createElement('textarea');
+                        ta.value = email;
+                        document.body.appendChild(ta);
+                        ta.select();
+                        document.execCommand('copy');
+                        ta.remove();
+                        showToast('✓ 邮箱已复制');
+                    });
+                }
+            });
+            el.appendChild(copyBtn);
+        }
+
+        // --- Hero Meta ---
+        function renderHeroMeta() {
+            const el = document.getElementById('heroMeta');
+            const items = [];
+            if (resume.email) {
+                items.push({
+                    icon: 'mail',
+                    label: resume.email,
+                    copy: true,
+                    raw: resume.email
+                });
+            }
+            if (resume.phone) {
+                items.push({
+                    icon: 'phone',
+                    label: resume.phone,
+                    copy: false
+                });
+            }
+            if (resume.location) {
+                items.push({
+                    icon: 'map',
+                    label: resume.location,
+                    copy: false
+                });
+            }
+            if (resume.github) {
+                items.push({
+                    icon: 'github',
+                    label: 'GitHub',
+                    copy: false,
+                    link: resume.github
+                });
+            }
+            if (resume.portfolio) {
+                items.push({
+                    icon: 'link',
+                    label: '作品集',
+                    copy: false,
+                    link: resume.portfolio
+                });
+            }
+
+            el.innerHTML = items.map(item => {
+                let content = '';
+                if (item.link) {
+                    content =
+                        `<a href="${item.link}" target="_blank" rel="noopener">${item.label}</a>`;
+                } else {
+                    content = `<span>${item.label}</span>`;
+                    if (item.copy && item.raw) {
+                        content +=
+                            ` <button class="copy-btn" data-email="${item.raw}" aria-label="复制邮箱">📋</button>`;
+                    }
+                }
+                const svg = getIconSVG(item.icon);
+                return `<div class="item">${svg} ${content}</div>`;
+            }).join('');
+
+            // copy email handler
+            el.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const email = btn.getAttribute('data-email');
+                    if (email) {
+                        navigator.clipboard.writeText(email).then(() => showToast('✓ 邮箱已复制'))
+                            .catch(() => {
+                                const ta = document.createElement('textarea');
+                                ta.value = email;
+                                document.body.appendChild(ta);
+                                ta.select();
+                                document.execCommand('copy');
+                                ta.remove();
+                                showToast('✓ 邮箱已复制');
+                            });
+                    }
+                });
+            });
+        }
+
+        function getIconSVG(type) {
+            const icons = {
+                mail: `<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+                phone: `<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+                map: `<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+                github: `<svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`,
+                link: `<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`
+            };
+            return icons[type] || icons.link;
+        }
+
+        // --- Stats ---
+        function renderStats() {
+            const el = document.getElementById('statsGrid');
+            if (!resume.stats || resume.stats.length === 0) { el.parentElement.classList.add('hidden'); return; }
+            el.innerHTML = resume.stats.map(s =>
+                `<div class="stat-card"><div class="stat-number">${s.number}</div><div class="stat-label">${s.label}</div></div>`
+                ).join('');
+        }
+
+        // --- Experience Tabs ---
+        function renderExperience() {
+            const nav = document.getElementById('expNav');
+            const panels = document.getElementById('expPanels');
+            const groups = resume.experiences.filter(g => g.items && g.items.length > 0);
+            if (groups.length === 0) {
+                document.getElementById('experience').classList.add('hidden');
+                return;
+            }
+
+            nav.innerHTML = groups.map((g, i) =>
+                `<button role="tab" aria-selected="${i===0?'true':'false'}" aria-controls="expPanel${i}" id="expTab${i}" data-index="${i}">${g.tab}</button>`
+            ).join('');
+
+            panels.innerHTML = groups.map((g, i) =>
+                `<div class="tabs-panel ${i===0?'active':''}" id="expPanel${i}" role="tabpanel" aria-labelledby="expTab${i}">
+                    ${g.items.map(item => `
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <span class="title">${item.title}</span>
+                                <span class="company">${item.company}</span>
+                                <span class="date">${item.date || '待补充'}</span>
+                            </div>
+                            <div class="exp-location">📍 ${item.location || '待补充'}</div>
+                            <ul class="exp-desc">${item.details.map(d => `<li>${d}</li>`).join('')}</ul>
+                        </div>
+                    `).join('')}
+                </div>`
+            ).join('');
+
+            // Tab switching
+            nav.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    nav.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', 'false'));
+                    this.setAttribute('aria-selected', 'true');
+                    panels.querySelectorAll('.tabs-panel').forEach((p, j) => {
+                        p.classList.toggle('active', j === idx);
+                    });
+                });
+                // keyboard
+                btn.addEventListener('keydown', function(e) {
+                    const btns = [...nav.querySelectorAll('button')];
+                    const cur = btns.indexOf(this);
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const next = (cur + 1) % btns.length;
+                        btns[next].click();
+                        btns[next].focus();
+                    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prev = (cur - 1 + btns.length) % btns.length;
+                        btns[prev].click();
+                        btns[prev].focus();
+                    }
+                });
+            });
+        }
+
+        // --- Projects ---
+        function renderProjects() {
+            const el = document.getElementById('projectList');
+            const projects = resume.projects.filter(p => p.name && p.name.trim() !== '');
+            if (projects.length === 0) {
+                document.getElementById('projects').classList.add('hidden');
+                return;
+            }
+            el.innerHTML = projects.map(p =>
+                `<div class="project-item">
+                    <div class="project-header">
+                        <span class="name">${p.name}</span>
+                        <span class="sub">${p.location || ''} ${p.date ? '· ' + p.date : ''}</span>
+                    </div>
+                    ${p.subtitle ? `<div style="font-size:0.85rem;color:var(--color-text-secondary);margin-bottom:4px;">${p.subtitle}</div>` : ''}
+                    <div class="project-tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
+                    <ul class="exp-desc">${p.details.map(d => `<li>${d}</li>`).join('')}</ul>
+                </div>`
+            ).join('');
+        }
+
+        // --- Skills ---
+        function renderSkills() {
+            const el = document.getElementById('skillsGrid');
+            const groups = resume.skillGroups.filter(g => g.items && g.items.length > 0);
+            if (groups.length === 0) {
+                document.getElementById('skills').classList.add('hidden');
+                return;
+            }
+            // left: group cards
+            const leftCol = groups.map(g =>
+                `<div class="skill-group">
+                    <span class="label">${g.label}</span>
+                    <div class="tags">${g.items.map(t => `<span>${t}</span>`).join('')}</div>
+                </div>`
+            ).join('');
+
+            // right: skill bars
+            const bars = resume.skillBars || [];
+            const barHtml = bars.length > 0 ?
+                `<div class="skill-group" style="grid-column: span 1;">
+                    <span class="label">能力评估</span>
+                    ${bars.map(b => `
+                        <div class="skill-bar-item">
+                            <span class="name">${b.name}</span>
+                            <div class="bar"><div class="fill" style="width:${b.pct}%;"></div></div>
+                            <span class="pct">${b.pct}%</span>
+                        </div>
+                    `).join('')}
+                </div>` : '';
+
+            el.innerHTML = leftCol + barHtml;
+        }
+
+        // --- Education & Cert ---
+        function renderEduCert() {
+            const el = document.getElementById('eduCertContent');
+            const edu = resume.education;
+            const certs = resume.certificates || [];
+
+            let html = '';
+
+            // Education
+            if (edu && edu.school) {
+                html += `
+                    <div class="edu-item">
+                        <div class="school">${edu.school}</div>
+                        <div class="major">${edu.major || '待补充专业'}</div>
+                        <div class="meta">
+                            <span>📍 ${edu.location || '待补充'}</span>
+                            <span>📅 ${edu.gradDate || '待补充'}</span>
+                            ${edu.rank ? `<span>🏅 排名 ${edu.rank}</span>` : ''}
+                        </div>
+                        ${edu.courses ? `<div style="font-size:0.82rem;color:var(--color-text-secondary);margin-top:4px;">📚 主修课程：${edu.courses}</div>` : ''}
+                        ${edu.desc ? `<div class="desc">${edu.desc}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            // Certificates
+            if (certs.length > 0) {
+                html += `<div style="margin-top:16px;"><h3 style="font-weight:600;font-size:1rem;margin-bottom:10px;">📜 证书与认证</h3><div class="cert-list">`;
+                certs.forEach(c => {
+                    if (c.name && c.name.trim() !== '') {
+                        html += `
+                            <div class="cert-item">
+                                <div class="name">${c.name}</div>
+                                <div class="issuer">${c.issuer || ''} ${c.date ? '· ' + c.date : ''}</div>
+                                ${c.desc ? `<div class="desc">${c.desc}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                });
+                html += `</div></div>`;
+            }
+
+            if (html.trim() === '') {
+                el.parentElement.classList.add('hidden');
+            } else {
+                el.innerHTML = html;
+            }
+        }
+
+        // --- Toast ---
+        function showToast(msg) {
+            const el = document.getElementById('copyToast');
+            el.textContent = msg;
+            el.classList.add('show');
+            clearTimeout(el._timer);
+            el._timer = setTimeout(() => el.classList.remove('show'), 2000);
+        }
+
+        // --- Theme ---
+        function initTheme() {
+            const stored = localStorage.getItem('theme') || 'light';
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = stored === 'dark' || (stored === 'auto' && prefersDark) ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        }
+
+        function updateThemeIcon(theme) {
+            const btn = document.getElementById('themeToggle');
+            if (theme === 'dark') {
+                btn.innerHTML =
+                    `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+            } else {
+                btn.innerHTML =
+                    `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+            }
+        }
+
+        // --- Back to top ---
+        function initBackTop() {
+            const btn = document.getElementById('backTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // --- Mobile nav toggle ---
+        function initMobileNav() {
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+            toggle.addEventListener('click', () => {
+                const open = links.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', open);
+            });
+            // close on link click
+            links.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    links.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+            // close on outside click
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.navbar')) {
+                    links.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // --- Nav active link ---
+        function initNavActive() {
+            const links = document.querySelectorAll('.navbar-links a');
+            const sections = ['hero', 'experience', 'projects', 'skills', 'education'];
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        links.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, { threshold: 0.3, rootMargin: '-40px 0px -40px 0px' });
+
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) observer.observe(el);
+            });
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderBadges();
+            renderHeroContact();
+            renderHeroMeta();
+            renderStats();
+            renderExperience();
+            renderProjects();
+            renderSkills();
+            renderEduCert();
+
+            initTheme();
+            initBackTop();
+            initMobileNav();
+            initNavActive();
+
+            // Print button
+            document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+            // Theme toggle
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+            // Close mobile nav on resize to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    document.getElementById('navLinks').classList.remove('open');
+                    document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
